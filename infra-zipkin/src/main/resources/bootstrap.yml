@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: infra-zipkin
+server:
+  port: 9411
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

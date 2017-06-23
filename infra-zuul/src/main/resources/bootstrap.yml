@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: infra-zuul
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: infra-config-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+

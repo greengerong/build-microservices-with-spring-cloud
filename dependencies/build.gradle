@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+apply plugin: "org.springframework.boot"
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+ext {
+    mainClassName = ''
+    springCloudVersion = 'Dalston.SR1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+dependencies {
+    runtime('org.springframework.boot:spring-boot-starter-actuator')
+    runtime('org.springframework.cloud:spring-cloud-starter-config')
+    runtime('org.springframework.cloud:spring-cloud-config-server')
+    runtime('org.springframework.cloud:spring-cloud-starter-eureka')
+    runtime('org.springframework.cloud:spring-cloud-starter-eureka-server')
+    runtime('org.springframework.cloud:spring-cloud-starter-feign')
+    runtime('org.springframework.cloud:spring-cloud-starter-hystrix')
+    runtime('org.springframework.cloud:spring-cloud-starter-sleuth')
+    runtime('org.springframework.cloud:spring-cloud-starter-zipkin')
+    runtime('org.springframework.cloud:spring-cloud-starter-zuul')
+    runtime('org.springframework.boot:spring-boot-starter-web')
+    runtime('io.zipkin.java:zipkin-autoconfigure-ui')
+    runtime('io.zipkin.java:zipkin-server')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
